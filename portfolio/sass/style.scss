@@ -1,0 +1,606 @@
+@use "color";
+@use "breakpoints";
+
+body {
+  font-family: "Open Sans", "Noto Sans JP", sans-serif;
+  color: color.$cl-black;
+
+  &.is-fixed {
+    overflow: hidden;
+  }
+}
+
+.button {
+  // 上下中央ぞろえ
+  display: flex;
+  align-items: center;
+  width: 124px;
+  margin: 0 auto;
+
+  svg {
+    display: flex;
+    height: 100%;
+  }
+
+  &--bg {
+    background: color.$white;
+
+    .button__text {
+      color: color.$bg-dark;
+    }
+  }
+
+  &--border {
+    border: 1px solid color.$white;
+  }
+
+  &__icon {
+  }
+
+  &__text {
+    margin-left: 10px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: color.$white;
+  }
+
+  &__icon-path {
+    fill: color.$white;
+
+    &--contact {
+      fill: color.$bg-dark;
+    }
+  }
+}
+
+.button__text {
+  color: color.$white;
+  margin-top: 5px;
+}
+
+// header
+.header {
+  background-color: color.$bg-dark;
+  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  // 要素の重なり順を指定するプロパティ。数値が大きい要素ほど、上に表示される。
+  z-index: 999;
+  position: relative;
+
+
+  &__img{
+    width: 150px;
+  }
+
+  &__item-img {
+    width: 150px;
+  }
+  &__sp {
+    display: inline-block;
+    width: 150px;
+  }
+
+  &__nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__nav-items {
+    & + & {
+      margin-top: 24px;
+    }
+  }
+
+  &__container {
+    width: 100%;
+    position: relative;
+  }
+
+  &__logo {
+    color: color.$white;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: (160px);
+    height: 90px;
+    padding: 14px 24px;
+    font-size: 20px;
+    color: color.$white;
+  }
+
+  &__logo-text {
+  }
+
+  &__menu-button {
+    border: none;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 30px;
+    height: 36px;
+    // 要素がはみ出したとき、収まるようにする
+    overflow: hidden;
+    // 色を透明にする
+    color: transparent;
+    background: url(../img/bg_menu.png);
+    background-size: 100% auto;
+  }
+
+  &.is-checked {
+    background: url(../img/bg_menu-close.png) center center no-repeat;
+    background-size: 100% auto;
+  }
+
+  &__contents {
+    //windowの高さを表す100vh
+    // 100vhからヘッダーの高さ(82px)引いて、ヘッダーとその下のコンテンツの合計でウィンドウの高さいっぱいにする
+    // height: calc(100vh-82px);
+    height: calc(100vh - 80px);
+    border-top: 1px solid color.$white;
+    display: none;
+    padding: 50px 130px;
+    left: 0;
+    position: absolute;
+    margin: 76px auto;
+    background-color: color.$bg-dark;
+    width: 100%;
+  }
+
+  &__nav-list {
+  }
+}
+
+// fv
+.fv {
+  position: relative;
+
+  &__contents {
+    position: absolute;
+    bottom: 26px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    // center center no-repeatとは、背景画像が要素の中央に配置され、背景画像を繰り返さず１回だけ表示されることを意味する。
+    background-size: 100% auto;
+    padding: 32px;
+  }
+
+  &__heading {
+  }
+
+  &__heading-main {
+display: block;
+bottom: 300px;
+left: 0;
+width: 100%;
+height: 200px;
+right: 30px;
+padding: 20px;
+  }
+
+
+  &__text1{
+
+  }
+
+  &__text2{
+display: block;
+width: 150px
+  }
+}
+
+// 共通クラス
+.section {
+  padding: 50px 0;
+
+  &__inner {
+    padding: 0px 35px;
+  }
+
+  &__head {
+    margin-bottom: 32px;
+
+    &--center {
+      text-align: center;
+    }
+  }
+
+  &__head-main {
+    display: block;
+    font-size: 35px;
+  }
+
+  &__head-sub {
+    display: block;
+    font-size: 10px;
+  }
+
+  &__lead-text {
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  &__contents {
+  }
+}
+
+// service
+.service {
+  &__list {
+  }
+
+  &__item {
+    & + & {
+      margin-top: 40px;
+    }
+  }
+
+  &__item-img {
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  &__item-name {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  &__item-text {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+}
+
+// works
+.works {
+  background-color: color.$bg-light;
+
+  &__list {
+  }
+
+  &__item {
+    & + & {
+      margin-top: 40px;
+    }
+  }
+
+  &__item-img {
+    margin-bottom: 12px auto;
+
+    img {
+      box-shadow: 0 4px 15px 0 rgba(color.$black, 0.15);
+    }
+  }
+
+  &__item-name {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  &__item-link {
+    text-decoration: underline;
+    font-size: 14px;
+  }
+}
+
+// about
+.about {
+  &__container {
+  }
+
+  &__item-img {
+    margin-bottom: 20px;
+  }
+}
+
+// flow
+.flow {
+  background-color: color.$bg-light;
+
+  &__list {
+    margin-top: 40px;
+  }
+
+  &__item {
+    position: relative;
+    border: 1px solid color.$cl-border;
+    padding: 46px 16px 24px;
+
+    & + & {
+      margin-top: 60px;
+    }
+  }
+
+  &__item-num {
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 24px;
+    background-color: color.$bg-dark;
+    color: color.$white;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    // 上下中央揃え
+    align-items: center;
+    // 左右中央ぞろえ
+    justify-content: center;
+  }
+
+  &__item-img {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  &__item-name {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  &__item-text {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+// message
+.message {
+  &__container {
+  }
+
+  &__img {
+    margin-bottom: 30px;
+  }
+}
+
+// page-bottom
+.page-bottom {
+  color: color.$white;
+
+  &__item {
+    padding: 30px;
+
+    &--contact {
+      background-color: color.$bg-gray-l;
+    }
+
+    &--twitter {
+      background-color: color.$bg-dark;
+    }
+  }
+
+  &__button {
+    justify-content: center;
+  }
+}
+
+.footer {
+  font-family: "Noto Sans JP", sans-serif;
+  text-align: center;
+  padding: 10px;
+}
+
+// *---------------------------
+// pc
+
+@include breakpoints.mq(pc) {
+  .wrapper {
+    display: flex;
+  }
+
+  .main {
+    // headerとmainの合計でflex-basisが100%になるようにする。
+    flex-basis: 90%;
+  }
+
+  .header {
+    position: relative;
+    // wrapperにdisplay: flexなので、それを基準に幅を変えるflex-basis
+    flex-basis: 10%;
+    padding: 50px 20px;
+
+    &__container {
+      width: 200px;
+      margin: 0 auto;
+      position: sticky;
+      top: 50px;
+    }
+
+    &__logo {
+      font-size: 30px;
+      letter-spacing: 0.12em;
+      line-height: 1.1;
+      display: block;
+      width: 200px;
+      margin: 0 auto;
+    }
+
+    &__logo-text {
+      position: relative;
+      bottom: 52px;
+      left: 12px;
+      font-size: 20px;
+    }
+
+    &__menu-button {
+      display: none;
+    }
+
+    &__contents {
+      display: block;
+      border-top: none;
+      width: 200px;
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+  }
+
+  .button {
+    transition: background 0.3s, color 0.3s, opacity 0.3s;
+
+    &:hover {
+      background-color: color.$white;
+
+      .button__icon-path {
+        fill: color.$bg-dark;
+      }
+
+      .button__text {
+        color: color.$bg-dark;
+      }
+    }
+
+    &--bg {
+      color: color.$bg-dark;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  .section {
+    &__inner {
+      // ワイド画面にしたときにのべーっとならないように、コンテンツの幅が一番大きいときで880pxまでにする。35pxはspビューでのpaddingの値と一緒にする。
+      max-width: calc(880px + 35px * 2);
+      margin: 0 auto;
+    }
+
+    &__head-main {
+      font-size: 50px;
+    }
+
+    &__head-sub {
+      font-size: 12px;
+    }
+  }
+
+  .service {
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8%;
+    }
+
+    &__item {
+      & + & {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .works {
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8%;
+    }
+
+    &__item {
+      & + & {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .about {
+    &__container {
+      display: flex;
+      //  反対向きに横並び
+      flex-direction: row-reverse;
+      gap: 40px;
+    }
+  }
+
+  .flow {
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    &__item {
+      & + & {
+        margin-top: 0;
+      }
+    }
+
+    &__item-text {
+      font-size: 12px;
+    }
+  }
+
+  .message {
+    &__container {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 40px;
+    }
+  }
+
+  .page-bottom {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    &__item {
+      // 画面を小さくしたときに改行してしまわないように、左右の余白は小さめにする
+      padding: 60px 10px;
+    }
+  }
+
+  .fv {
+    &__contents {
+      // 幅100%、高さ自動。片方の値にautoを指定すると、元の縦横比を守ったままサイズが自動計算されて表示される。
+      background-size: 100% auto;
+      // 背景イメージに合うように調整する
+      width: 600px;
+      bottom: 100px;
+      height: 170px;
+      padding-top: 20px;
+      padding-left: 90px;
+    }
+  }
+}
+
+// tb
+@include breakpoints.mq(tb) {
+  .fv {
+    &__contents {
+      width: 100%;
+      bottom: 50%;
+      height: 170px;
+      padding-top: 30px;
+      padding-left: 90px;
+      transform: translateY(50%);
+    }
+  }
+
+  .section {
+    &__head-main {
+      font-size: 45px;
+    }
+  }
+
+  .service {
+    &__item-name {
+      font-size: 14px;
+    }
+  }
+
+  .flow {
+    &__list {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 16px;
+    }
+  }
+}
